@@ -5,6 +5,7 @@ namespace Modules\Category\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Modules\Category\Http\Requests\StoreCategoryRequest;
+use Modules\Category\Http\Requests\UpdateCategoryRequest;
 use Modules\Category\Services\CategoryService;
 
 class CategoryController extends Controller
@@ -35,7 +36,8 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCategoryRequest $request) {
+    public function store(StoreCategoryRequest $request) 
+    {
         $this->categoryService->store($request->validated());
         return redirect()->route('categories.index')->with('success', 'Category created successfully!');
     }
@@ -45,7 +47,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        return view('category::show');
+        // return view('category::show');
     }
 
     /**
@@ -53,13 +55,18 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        return view('category::edit');
+        $category = $this->categoryService->findById($id);
+        return view('category::edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id) {}
+    public function update(UpdateCategoryRequest $request, $id) 
+    {
+        $this->categoryService->update($id, $request->validated());
+        return redirect()->route('categories.index')->with('success', 'Category updated successfully!');
+    }
 
     /**
      * Remove the specified resource from storage.
