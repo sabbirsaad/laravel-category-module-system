@@ -12,6 +12,7 @@
         <meta name="description" content="{{ $description ?? '' }}">
         <meta name="keywords" content="{{ $keywords ?? '' }}">
         <meta name="author" content="{{ $author ?? '' }}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
