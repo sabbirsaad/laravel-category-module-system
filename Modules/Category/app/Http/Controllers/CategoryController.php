@@ -4,6 +4,7 @@ namespace Modules\Category\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\Category\Http\Requests\StoreCategoryRequest;
 use Modules\Category\Services\CategoryService;
 
 class CategoryController extends Controller
@@ -34,7 +35,10 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {}
+    public function store(StoreCategoryRequest $request) {
+        $this->categoryService->store($request->validated());
+        return redirect()->route('categories.index')->with('success', 'Category created successfully!');
+    }
 
     /**
      * Show the specified resource.
