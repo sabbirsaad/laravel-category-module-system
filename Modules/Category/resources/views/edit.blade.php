@@ -6,7 +6,7 @@
         
         <div class="mb-3">
             <label>Name</label>
-            <input type="text" name="name" value="{{ $category->name }}" class="form-control">
+            <input type="text" id="name" name="name" value="{{ $category->name }}" class="form-control">
             @error('name') 
                 <span class="text-danger">{{ $message }}</span> 
             @enderror
@@ -14,7 +14,7 @@
 
         <div class="mb-3">
             <label>Slug</label>
-            <input type="text" name="slug" value="{{ $category->slug }}" class="form-control">
+            <input type="text" id="slug" name="slug" value="{{ $category->slug }}" class="form-control">
             @error('slug') 
                 <span class="text-danger">{{ $message }}</span> 
             @enderror
