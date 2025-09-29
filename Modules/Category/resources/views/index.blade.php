@@ -1,4 +1,5 @@
-<x-category::layouts.master>
+@extends('layouts.master')
+@section('content')
 <div class="container mt-4">
     <h2>Category List</h2>
     <a href="{{ route('categories.create') }}" class="btn btn-primary mb-3">Add Category</a>
@@ -38,4 +39,4 @@
         </tbody>
     </table>
 </div>
-</x-category::layouts.master>
+@endsection

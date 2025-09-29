@@ -1,4 +1,5 @@
-<x-category::layouts.master>
+@extends('layouts.master')
+@section('content')
 <div class="container mt-4">
     <h2>Edit Category</h2>
     <form action="{{ route('categories.update',$category->id) }}" method="POST" enctype="multipart/form-data">
@@ -32,4 +33,4 @@
         <a href="{{ route('categories.index') }}" class="btn btn-secondary">Back</a>
     </form>
 </div>
-</x-category::layouts.master>
+@endsection

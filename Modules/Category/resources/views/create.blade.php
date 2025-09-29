@@ -1,4 +1,5 @@
-<x-category::layouts.master>
+@extends('layouts.master')
+@section('content')
 <div class="container mt-4">
     <h2>Create Category</h2>
     <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
@@ -31,4 +32,4 @@
         <a href="{{ route('categories.index') }}" class="btn btn-secondary">Back</a>
     </form>
 </div>
-</x-category::layouts.master>
+@endsection
