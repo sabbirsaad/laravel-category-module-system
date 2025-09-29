@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Modules\Category\Http\Requests\StoreCategoryRequest;
 use Modules\Category\Http\Requests\UpdateCategoryRequest;
+use Modules\Category\Services\CategorySearchService;
 use Modules\Category\Services\CategoryService;
 
 class CategoryController extends Controller
@@ -16,6 +17,19 @@ class CategoryController extends Controller
     {
         $this->categoryService = $categoryService;
     }
+
+    /**
+     * Search a Category.
+     */
+    public function search(Request $request, CategorySearchService $service)
+    {
+        
+        $keyword = $request->query('q');
+        $results = $service->search($keyword);
+
+        return response()->json($results);
+    }
+
     /**
      * Display a listing of the resource.
      */

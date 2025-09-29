@@ -3,6 +3,11 @@
 <div class="container mt-4">
     <h2>Category List</h2>
     <a href="{{ route('categories.create') }}" class="btn btn-primary mb-3">Add Category</a>
+
+    <div class="my-3">
+        <input type="text" id="search" class="form-control m-auto text-center w-25" data-url="{{ route('categories.search') }}" placeholder="Search category...">
+        <ul id="search-results" class="list-group mt-2"></ul>
+    </div>
     
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
