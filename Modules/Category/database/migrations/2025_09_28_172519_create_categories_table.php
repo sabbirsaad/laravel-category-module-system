@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
+            $table->string('image')->nullable();
             $table->boolean('is_parent')->default(1); // 1 = parent, 0 = child
             $table->timestamps();
         });

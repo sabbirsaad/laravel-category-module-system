@@ -18,6 +18,7 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Image</th>
                 <th>Slug</th>
                 <th>Is Parent</th>
                 <th>Action</th>
@@ -28,6 +29,19 @@
                 <tr>
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->name }}</td>
+                    <td>
+                        @if($category->image)
+                        <img src="{{ asset('uploads/categories/' . $category->image) }}"
+                            alt="{{ $category->name }}"
+                            class="rounded"
+                            style="width: 50px; height: 50px; object-fit: cover;">
+                        @else
+                        <div class="bg-info rounded d-flex align-items-center justify-content-center"
+                            style="width: 50px; height: 50px;">
+                            <i class="bi bi-image text-white">📷</i>
+                        </div>
+                        @endif
+                    </td>
                     <td>{{ $category->slug }}</td>
                     <td>{{ $category->is_parent ? 'Yes' : 'No' }}</td>
                     <td>
