@@ -35,7 +35,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = $this->categoryService->getAll();
+        $categories = $this->categoryService->paginate(5);
         return view('category::index', compact('categories'));
     }
 

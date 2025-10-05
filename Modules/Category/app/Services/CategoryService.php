@@ -11,6 +11,11 @@ class CategoryService
         return Category::orderBy('id', 'desc')->get();
     }
 
+    public function paginate($page)
+    {
+        return Category::orderBy('id', 'desc')->paginate($page);
+    }
+
     public function store(array $data)
     {
         if (isset($data['image'])) {
