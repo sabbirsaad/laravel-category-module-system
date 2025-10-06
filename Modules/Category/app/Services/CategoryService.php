@@ -64,4 +64,16 @@ class CategoryService
         $file->move(public_path('uploads/categories'), $filename);
         return $filename;
     }
+
+    public function search(?string $keyword)
+    {
+        $results = Category::query()
+            ->when($keyword, function ($query, $keyword) {
+                $query->where('name', 'like', "%{$keyword}%")
+                      ->orWhere('slug', 'like', "%{$keyword}%");
+            })
+            ->get(['id', 'name', 'slug']);
+
+        return $results;
+    }
 }

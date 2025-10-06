@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Modules\Category\Http\Requests\StoreCategoryRequest;
 use Modules\Category\Http\Requests\UpdateCategoryRequest;
-use Modules\Category\Services\CategorySearchService;
 use Modules\Category\Services\CategoryService;
+use Modules\Category\DataTables\CategoryDataTable;
 
 class CategoryController extends Controller
 {
@@ -21,7 +21,7 @@ class CategoryController extends Controller
     /**
      * Search a Category.
      */
-    public function search(Request $request, CategorySearchService $service)
+    public function search(Request $request, CategoryService $service)
     {
         
         $keyword = $request->query('q');
@@ -33,10 +33,9 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(CategoryDataTable $dataTable)
     {
-        $categories = $this->categoryService->paginate(5);
-        return view('category::index', compact('categories'));
+        return $dataTable->render('category::index');
     }
 
     /**
